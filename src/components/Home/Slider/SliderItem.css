@@ -1,0 +1,22 @@
+.sliderItem img{
+    height:200px;
+    width:160px;
+    object-fit: cover;
+    border-radius: 7px;
+    cursor: pointer;
+}
+
+
+
+@media(max-width:800px){
+    .sliderItem img{
+        height:160px;
+        width:130px;
+    }
+}
+@media(max-width:400px){
+    .sliderItem img{
+        height:160px;
+        width:110px;
+    }
+}

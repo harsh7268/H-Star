@@ -1,0 +1,38 @@
+
+.cardItem img{
+    height:200px;
+    width:160px;
+    grid-area: card;
+    border-radius: 10px;
+    cursor: pointer;
+}
+@media(max-width:800px){
+    .cardItem img{
+        height:160px;
+        width:130px;
+    }
+}
+@media(max-width:650px){
+    .cardItem img{
+        height:150px;
+        width:120px;
+    }
+}
+@media(max-width:400px){
+    .cardItem img{
+        height:150px;
+        width:110px;
+    }
+}
+@media(max-width:350px){
+    .cardItem img{
+        height:130px;
+        width:90px;
+    }
+}
+@media(max-width:290px){
+    .cardItem img{
+        height:100px;
+        width:60px;
+    }
+}
