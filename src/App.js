@@ -34,6 +34,8 @@ function App(props) {
   const [totalResults,setTotalResults] = useState(0);
   const [loading,setLoading] = useState(true);
   const [iden,setIden] = useState(0);
+  const [countryName,setCountryName] = useState('hp');
+  const [foot,setFoot] = useState(true);
   const search = (a) =>{
          setText(a);
          console.log(a.length);
@@ -43,8 +45,11 @@ function App(props) {
 
   }
   const mainFunc1 = (lng)  => {
-    setLanguages(lng);
+    setLanguages(lng); 
     console.log(lng);
+  }
+  const country = (a) =>{
+    setCountryName(a);
   }
     const mainFunc  =  (a,type,known_for,iden) =>{
     b=a;
@@ -66,6 +71,10 @@ function App(props) {
       );
       setContent(data);
     
+  }
+  const footer = (a) =>{
+    setFoot(a)
+    console.log(a);
   }
   const fetchSearchData = async (a) =>{
     console.log(a);
@@ -109,7 +118,7 @@ function App(props) {
   return (
     <Router>
     <div className="App">
-    <NavBar mainFunc1={mainFunc1} search={search} fetchSearchData={fetchSearchData}/>
+    <NavBar  mainFunc1={mainFunc1} search={search} fetchSearchData={fetchSearchData} countryName={countryName}/>
     <LoadingBar
         color='#0463df'
         progress={progress}
@@ -141,107 +150,109 @@ function App(props) {
     <Switch>
   
           <Route exact path="/" key='home'>
-          <Home  mainFunc={mainFunc}  topBar={topBar} />
+          <Home country={country} name='hp'  mainFunc={mainFunc}  topBar={topBar} footer={footer}/>
           </Route>
  
           <Route exact path="/movie/popular" >
-        <MainItem mainFunc={mainFunc} key='moviePopular'  type='movie' category='popular' topBar={topBar} languages={languages}/> 
+        <MainItem footer={footer}  mainFunc={mainFunc} key='moviePopular'  type='movie' category='popular' topBar={topBar} languages={languages}/> 
           </Route>
           <Route exact path="/movie/top_rated" >
-        <MainItem mainFunc={mainFunc} key='movieTop_rated' type='movie' category='top_rated'  topBar={topBar}  languages={languages}/> 
+        <MainItem footer={footer}  mainFunc={mainFunc} key='movieTop_rated' type='movie' category='top_rated'  topBar={topBar}  languages={languages}/> 
           </Route>
           <Route exact path="/discover/movie" >
-        <MainItem mainFunc={mainFunc} key='movieLatest' type='discover' category='movie'  topBar={topBar} languages={languages}/> 
+        <MainItem footer={footer}  mainFunc={mainFunc} key='movieLatest' type='discover' category='movie'  topBar={topBar} languages={languages}/> 
           </Route>
           <Route exact path="/movie/upcoming" >
-        <MainItem mainFunc={mainFunc} key='movieUpcoming' type='movie' category='upcoming'  topBar={topBar} languages={languages}/> 
+        <MainItem footer={footer}  mainFunc={mainFunc} key='movieUpcoming' type='movie' category='upcoming'  topBar={topBar} languages={languages}/> 
           </Route>
           <Route exact path="/movie/now_playing" >
-        <MainItem mainFunc={mainFunc} key='movieNow-playing' type='movie' category='now_playing'  topBar={topBar} languages={languages}/> 
+        <MainItem footer={footer}  mainFunc={mainFunc} key='movieNow-playing' type='movie' category='now_playing'  topBar={topBar} languages={languages}/> 
           </Route>
           <Route  exact path="/tv/popular" >
-        <MainItem mainFunc={mainFunc} key='tvPopular' type='tv' category='popular'  topBar={topBar} languages={languages}/> 
+        <MainItem footer={footer}  mainFunc={mainFunc} key='tvPopular' type='tv' category='popular'  topBar={topBar} languages={languages}/> 
           </Route>
           <Route exact path="/tv/top_rated" >
-        <MainItem mainFunc={mainFunc} key='tvTop_rated' type='tv' category='top_rated' topBar={topBar}  languages={languages}/> 
+        <MainItem footer={footer}  mainFunc={mainFunc} key='tvTop_rated' type='tv' category='top_rated' topBar={topBar}  languages={languages}/> 
           </Route>
           <Route exact path="/discover/tv"   >
-        <MainItem mainFunc={mainFunc} key='tvLatest' type='discover' category='tv'  topBar={topBar} languages={languages}/> 
+        <MainItem footer={footer}  mainFunc={mainFunc} key='tvLatest' type='discover' category='tv'  topBar={topBar} languages={languages}/> 
           </Route>
           <Route exact path="/tv/airing_today" >
-        <MainItem mainFunc={mainFunc} key='tvAiring_today' type='tv' category='airing_today'  topBar={topBar} languages={languages}/> 
+        <MainItem footer={footer}  mainFunc={mainFunc} key='tvAiring_today' type='tv' category='airing_today'  topBar={topBar} languages={languages}/> 
           </Route>
           <Route exact path="/tv/on_the_air" >
-        <MainItem mainFunc={mainFunc} key='tvOn_the_air' type='tv' category='on_the_air'  topBar={topBar} languages={languages}/> 
+        <MainItem footer={footer}  mainFunc={mainFunc} key='tvOn_the_air' type='tv' category='on_the_air'  topBar={topBar} languages={languages}/> 
           </Route>
           <Route exact path="/person/popular" >
-        <MainItem mainFunc={mainFunc} key='personPopular' type='person' category='popular'  topBar={topBar} languages={languages}/> 
+        <MainItem footer={footer}  mainFunc={mainFunc} key='personPopular' type='person' category='popular'  topBar={topBar} languages={languages}/> 
           </Route>
           {
             content.map((c)=> (
           <Route exact path={`/language/${c.english_name}`} key={c.iso_639_1}>
              <Carousel mainFunc={mainFunc}  topBar={topBar}  language={c.iso_639_1} type='discover' category='movie'    />
-              <Data mainFunc={mainFunc}  language={c.iso_639_1}   topBar={topBar} /> 
+              <Data country={country} name={c.english_name} footer={footer} mainFunc={mainFunc}  language={c.iso_639_1}   topBar={topBar} /> 
           </Route>
           ))
            }
 
         <Route exact path="/trending/all/day" >
-        <MainItem mainFunc={mainFunc} key='trendingAllDay' type='trending' category='all' time='day'  topBar={topBar} languages={languages}/> 
+        <MainItem footer={footer}  mainFunc={mainFunc} key='trendingAllDay' type='trending' category='all' time='day'  topBar={topBar} languages={languages}/> 
         </Route>
         <Route exact path="/trending/all/week" >
-        <MainItem mainFunc={mainFunc} key='trendingAllWeek' type='trending' category='all' time='week'  topBar={topBar} languages={languages}/> 
+        <MainItem footer={footer}  mainFunc={mainFunc} key='trendingAllWeek' type='trending' category='all' time='week'  topBar={topBar} languages={languages}/> 
         </Route>
         <Route exact path="/trending/movie/day" >
-        <MainItem mainFunc={mainFunc} key='trendingMovieDay' type='trending' category='movie' time='day'  topBar={topBar} languages={languages}/> 
+        <MainItem footer={footer}  mainFunc={mainFunc} key='trendingMovieDay' type='trending' category='movie' time='day'  topBar={topBar} languages={languages}/> 
         </Route>
         <Route exact path="/trending/movie/week" >
-        <MainItem mainFunc={mainFunc} key='trendingMovieWeek' type='trending' category='movie' time='week'  topBar={topBar} languages={languages}/> 
+        <MainItem footer={footer}  mainFunc={mainFunc} key='trendingMovieWeek' type='trending' category='movie' time='week'  topBar={topBar} languages={languages}/> 
         </Route>
         <Route exact path="/trending/tv/day" >
-        <MainItem mainFunc={mainFunc} key='trendingTvDay' type='trending' category='tv' time='day'  topBar={topBar} languages={languages}/> 
+        <MainItem footer={footer}  mainFunc={mainFunc} key='trendingTvDay' type='trending' category='tv' time='day'  topBar={topBar} languages={languages}/> 
         </Route>
         <Route exact path="/trending/tv/week" >
-        <MainItem mainFunc={mainFunc} key='trendingTvWeek' type='trending' category='tv' time='week'  topBar={topBar} languages={languages}/> 
+        <MainItem footer={footer}  mainFunc={mainFunc} key='trendingTvWeek' type='trending' category='tv' time='week'  topBar={topBar} languages={languages}/> 
         </Route>
         <Route exact path={`/movie/${valid}/similar`} >
-        <MainItem mainFunc={mainFunc} key='movieSimilar' type='movie' category={valid} time='similar'  topBar={topBar} languages={languages}/> 
+        <MainItem footer={footer}  mainFunc={mainFunc} key='movieSimilar' type='movie' category={valid} time='similar'  topBar={topBar} languages={languages}/> 
         </Route>
         <Route exact path={`/movie/${valid}/recommendations`} >
-        <MainItem mainFunc={mainFunc} key='movieRecommendations' type='movie' category={valid} time='recommendations'  topBar={topBar} languages={languages}/> 
+        <MainItem footer={footer}  mainFunc={mainFunc} key='movieRecommendations' type='movie' category={valid} time='recommendations'  topBar={topBar} languages={languages}/> 
         </Route>
         <Route exact path={`/tv/${valid}/similar`} >
-        <MainItem mainFunc={mainFunc} key='tvSimilar' type='tv' category={valid} time='similar'  topBar={topBar} languages={languages}/> 
+        <MainItem footer={footer}  mainFunc={mainFunc} key='tvSimilar' type='tv' category={valid} time='similar'  topBar={topBar} languages={languages}/> 
         </Route>
         <Route exact path={`/tv/${valid}/recommendations`} >
-        <MainItem mainFunc={mainFunc} key='tvRecommendations' type='tv' category={valid} time='recommendations'  topBar={topBar} languages={languages}/> 
+        <MainItem footer={footer}  mainFunc={mainFunc} key='tvRecommendations' type='tv' category={valid} time='recommendations'  topBar={topBar} languages={languages}/> 
         </Route>
 
 
         <Route exact path={`/${valid}`} key={valid} >
-        <DetailModel id={valid} topBar={topBar} type={type} mainFunc={mainFunc} knowsFor={knowsFor} iden={iden}/>
+        <DetailModel footer={footer} id={valid} topBar={topBar} type={type} mainFunc={mainFunc} knowsFor={knowsFor} iden={iden}/>
         </Route>
         
         <Route exact path="/languages" >
-           <CountriesData mainFunc1={mainFunc1} />
+           <CountriesData country={country} mainFunc1={mainFunc1} footer={footer}/>
         </Route>
 
         <Route exact path="/privacy" key='privacy'>
-          <Privacy title='Privacy Policy'/>
+          <Privacy footer={footer}  title='Privacy Policy'/>
         </Route>
         <Route exact path="/help" key='help'>
-          <Privacy  title='Help' />
+          <Privacy footer={footer}   title='Help' />
         </Route>
         <Route exact path="/preferences" key='preferences'>
-          <Privacy title='Preferences' />
+          <Privacy footer={footer}  title='Preferences' />
         </Route>
         <Route exact path="/terms&conditions" key='terms'>
-          <Privacy title='Terms & Conditions' />
+          <Privacy footer={footer}  title='Terms & Conditions' />
         </Route>
 
         </Switch>
    }
+   { foot===true &&
    <Footer />
+  }
     </div>
     </Router>
   );

@@ -1,8 +1,12 @@
-import React from 'react';
+import React,{useEffect} from 'react';
 import './Privacy.css'
 
 export default function Privacy(props) {
-    const {title} = props;
+    const {title,footer} = props;
+    useEffect(() =>{
+      footer(true);
+      window.scrollTo(0, 0);
+    },[])
   return (
     <div className='privacy'>
       <h1>{title}</h1>

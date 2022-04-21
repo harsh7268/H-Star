@@ -12,7 +12,7 @@ export default function Person(props) {
        const func = (id,type)=>{
         console.log(id,type);
         mainFunc(id,type);
-          window.scrollTo(0, 0);
+         
     }
 
     const credits = async () =>{

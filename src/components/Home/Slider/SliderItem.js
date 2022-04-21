@@ -5,9 +5,11 @@ import { Link} from "react-router-dom";
 export default function SliderItem(props) {
     const { id,poster_path,title,date,media_type, backdrop_path,overview,mainFunc,type,known_for} = props;
     const func = () =>{
+     
       mainFunc(id,type,known_for);
       console.log(type,id,known_for);
-      window.scrollTo(0, 0);
+    
+     
     }
    
 

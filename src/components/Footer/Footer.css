@@ -71,8 +71,10 @@ footer .terms{
    font-size: 1.4rem;
    gap: 1rem;
 }
-li{
+.footer li Link{
+    display:block;
     cursor: none;
+    border: 1px solid #fff;
 }
 
 }

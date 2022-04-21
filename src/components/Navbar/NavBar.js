@@ -10,12 +10,13 @@ import {FiMonitor} from 'react-icons/fi';
 import {BiMoviePlay,BiHelpCircle} from 'react-icons/bi';
 import {BsFillPeopleFill} from 'react-icons/bs';
 import {AiFillSetting} from 'react-icons/ai';
+import {GiFilmProjector} from 'react-icons/gi'
 
 
 
 export default function NavBar(props) {
 
-  const {mainFunc1,search,fetchSearchData} = props;
+  const {mainFunc1,search,fetchSearchData,countryName,} = props;
   const [active,setActive] = useState('active1');
  
   const [content,setContent] = useState([]);
@@ -51,8 +52,12 @@ export default function NavBar(props) {
   }
   const activationBlur = () =>{
     setActive('active1');
-    window.scrollTo(0, 0);
-    
+   
+   
+  }
+  const privacy = () =>{
+    setActive('active1');
+    ;
   }
   const textChange = (event)=>{{
      setInputText(event.target.value);
@@ -105,7 +110,7 @@ export default function NavBar(props) {
     }
     
     const mouseLeaveTrending = () =>{
-      window.scrollTo(0, 0);
+      ;
       setStyle({
           menuHoverTv:'none',
           menuHoverMovies:'none',
@@ -116,6 +121,7 @@ export default function NavBar(props) {
           searchBorderBottom: '.5px solid rgba(255, 255, 255, 0.74)',
       })
        search(null);
+     
     }
 
    
@@ -136,7 +142,7 @@ export default function NavBar(props) {
     
       }
       const mouseLeavePeople = () =>{
-        window.scrollTo(0, 0);
+        ;
         setStyle({
 
             menuHoverTv:'none',
@@ -148,6 +154,7 @@ export default function NavBar(props) {
             searchBorderBottom: '.5px solid rgba(255, 255, 255, 0.74)',
         })
         search(null);
+       
       }
   const mouseHoverTv = () =>{
       
@@ -164,7 +171,7 @@ export default function NavBar(props) {
 
   }
   const mouseLeaveTv = () =>{
-    window.scrollTo(0, 0);
+    ;
     setStyle({
         menuHoverTv:'none',
         menuHoverMovies:'none',
@@ -175,7 +182,7 @@ export default function NavBar(props) {
         searchBorderBottom: '.5px solid rgba(255, 255, 255, 0.74)',
     })
     search(null);
-   
+    
   }
   const mouseHoverMovies = () =>{
       
@@ -192,7 +199,7 @@ export default function NavBar(props) {
 
   }
   const mouseLeaveMovies= () =>{
-    window.scrollTo(0, 0);
+    ;
     setStyle({
         menuHoverMovies:'none',
         menuHoverTv:'none',
@@ -203,6 +210,7 @@ export default function NavBar(props) {
         searchBorderBottom: '.5px solid rgba(255, 255, 255, 0.74)',
     })
     search(null);
+   
   }
 
  const searchBtn = () =>{
@@ -230,6 +238,12 @@ export default function NavBar(props) {
      console.log('hello search blur')
  }
 
+ const home  = () =>{
+  ;
+mainFunc1('hp');
+  search(null);
+  
+ }
  
 
   return (
@@ -244,12 +258,18 @@ export default function NavBar(props) {
                <MdOutlineMenu />
              </div>
              <Link to="/"  >
-               <div className="companyName" onClick={mouseLeaveTv} > 
-                 <MdOutlineHPlusMobiledata style={{fontSize:'2.5rem'}}/> <p>Star</p>  
+               <div className="companyName" onClick={home} > 
+                 <GiFilmProjector style={{fontSize:'1.8rem'}}/> <p>Cinecity</p>  
                  </div>
              </Link> 
              <ul>
-             <li className='trend' id='mainTrend'  onMouseEnter={mouseHoverTrending} onMouseLeave={mouseLeaveTrending} >Trending</li>
+               { countryName==='hp' &&
+             <li className='trend mainTrend'   onMouseEnter={mouseHoverTrending} onMouseLeave={mouseLeaveTrending} >Trending</li>
+               }
+                { countryName!=='hp' && 
+             <li className='trend mainTrend'    >{countryName}</li>
+              }
+             
              </ul> 
          </div>
        
@@ -272,14 +292,19 @@ export default function NavBar(props) {
            
             <li className='commonList' >
             <Link to='/languages' >
-           <span  onClick={activationBlur} key={1} ><span className='commonIconList'> <MdLanguage className='commonIcon' /> Languages</span></span>
+           <span  onClick={privacy} key={1} ><span className='commonIconList'> <MdLanguage className='commonIcon' /> Languages</span></span>
            </Link>
            </li>
-           <li  style={{borderTop:'.2px solid rgba(97, 86, 86, 0.596',marginTop:'.5rem'}} className='commonList help' ><Link  to="/preferences"><span  onClick={activationBlur} className='commonIconList listWidth'> <AiFillSetting  className='commonIcon' /> Preferences </span></Link></li>
-            <li style={{borderBottom:'.2px solid rgba(97, 86, 86, 0.596'}} className='commonList help' ><Link to='help'><span onClick={activationBlur} className='commonIconList listWidth'> <BiHelpCircle  className='commonIcon' /> Help </span></Link></li>
-            <li style={{fontSize:'12px',color:'rgb(138, 125, 125)'}} className='commonList help' ><span  className='commonIconList'> <span className='commonIconList' onClick={activationBlur}><Link to="/privacy">Privacy Policy</Link></span>  <span  onClick={activationBlur}><Link to="/terms&conditions">T&C</Link></span> <span>v1.00</span> </span></li>
+           <li  style={{borderTop:'.2px solid rgba(97, 86, 86, 0.596',marginTop:'.5rem'}} className='commonList help' ><Link  to="/preferences"><span  onClick={privacy} className='commonIconList listWidth'> <AiFillSetting  className='commonIcon' /> Preferences </span></Link></li>
+            <li style={{borderBottom:'.2px solid rgba(97, 86, 86, 0.596'}} className='commonList help' ><Link to='help'><span onClick={privacy} className='commonIconList listWidth'> <BiHelpCircle  className='commonIcon' /> Help </span></Link></li>
+            <li style={{fontSize:'12px',color:'rgb(138, 125, 125)'}} className='commonList help' ><span  className='commonIconList'> <span className='commonIconList' onClick={privacy}><Link to="/privacy">Privacy Policy</Link></span>  <span  onClick={privacy}><Link to="/terms&conditions">T&C</Link></span> <span>v1.00</span> </span></li>
+           { countryName==='hp' &&
             <li className='trend'  onMouseEnter={mouseHoverTrending} onMouseLeave={mouseLeaveTrending} >Trending</li>
-            
+           }
+           {
+             countryName!=='hp'&&
+             <li className='trend'   >{countryName}</li>
+           }
         </ul>
     </div>
   

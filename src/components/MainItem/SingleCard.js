@@ -6,7 +6,7 @@ export default function SingleCard(props) {
 
   const func = () =>{
     mainFunc(id,type,known_for,'cast');
-    window.scrollTo(0, 0);
+  
   }
   
   return (

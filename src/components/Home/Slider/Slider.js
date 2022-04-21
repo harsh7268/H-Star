@@ -36,7 +36,7 @@ const PreviousBtn = (props) =>{
 export default function Cors(props) {
 
  const [loading,setLoading] =useState(true);
-  const  {type,category,time,title,lng,mainFunc,id} = props;
+  const  {type,category,time,title,lng,mainFunc,id,footer} = props;
   const [typeValid,setTypeValid]=useState(false);
   const [ts,setTs] = useState(0);
   const [content,setContent] = useState([]);
@@ -86,16 +86,14 @@ export default function Cors(props) {
       setLoading(false);
   }
 
-   
+  
 
   }
-  const func = () =>{
-    window.scrollTo(0, 0);
-  }
+  
 
   useEffect( () =>{
    fetchData();
-   
+  
   },[])
 
 
@@ -159,9 +157,11 @@ export default function Cors(props) {
       
       <div className="sliderContent">
         <span> {title}</span>
+        <span >
      <Link to={type==='trending'||lng==='hx'?`/${type}/${category}/${time}`:`/${type}/${category}`}>
-        <span onClick={func} className='viewMore'> <span>View More</span> <span className='viewIcon'> <BsArrowRight/> </span> </span>
+        <span  className='viewMore'> <span>View More</span> <span className='viewIcon'> <BsArrowRight/> </span> </span>
        </Link>
+       </span>
       </div>
       <Slider {...settings}>
           {           
@@ -180,7 +180,8 @@ export default function Cors(props) {
                 mainFunc={mainFunc} 
                 
                 type={typeValid===true?c.media_type:ts}
-                 known_for={type==='person'?c.known_for:false}
+                 known_for={type==='person'?c.known_for:false} 
+                
                 />
                 
                 </div>

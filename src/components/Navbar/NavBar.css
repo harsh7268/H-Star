@@ -25,11 +25,15 @@ nav .leftMenu{
    position: relative;
 }
  .companyName{
-    color: #fff;
-   
+    color: rgba(255, 255, 255, 0.74);
     font-family: 'Fredoka One', cursive;
     display: flex;
+    gap:6px;
     align-items: center;
+    
+}
+.companyName p{
+    font-size:1.2rem;
 }
 nav .leftMenu .logo{
     display: flex;
@@ -166,7 +170,7 @@ nav .rightMenu  .subscribe{
 .trending li:hover{
     background-color: #0C111B;
 }
-#mainTrend{
+.mainTrend{
     display:none;
     cursor: pointer;
 }
@@ -192,7 +196,7 @@ nav .rightMenu  .subscribe{
     .companyName{
         cursor: none;
     }
-    #mainTrend{
+    .mainTrend{
          display:block;
          cursor:none;
     }

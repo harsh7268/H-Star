@@ -3,11 +3,11 @@ import axios from 'axios';
 import SingleCard from './SingleCard';
 import './MainItem.css';
 import InfiniteScroll from "react-infinite-scroll-component";
-import Spiner from './Spiner';
+import Spiner from './Spiner1';
 
 export default function MainItem(props) {
 
-    const {type,category,topBar,time,mainFunc,languages} = props;
+    const {type,category,topBar,time,mainFunc,languages,footer} = props;
     const [typeValid,setTypeValid]=useState(false);
     const  [mediaType,setMediaType] = useState(type);
     const [page,setPage] = useState(1);
@@ -111,7 +111,8 @@ export default function MainItem(props) {
 
   useEffect(() =>{
    fetchData();
-   
+   footer(false);
+   window.scrollTo(0, 0);
   },[])
   return (
     <div >

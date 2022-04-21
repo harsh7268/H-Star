@@ -5,9 +5,7 @@ import {BsYoutube} from 'react-icons/bs';
 import {Link} from 'react-router-dom';
 
 export default function Footer() {
-  const func = () =>{
-      window.scrollTo(0, 0);
-  }
+ 
   return (
     <footer>
     <div className='footer'>
@@ -30,10 +28,10 @@ export default function Footer() {
           <BsYoutube />
         </li>
         </ul>
-        <div onClick={func}>
+        <div >
          <Link to="/help"> <p>Help</p> </Link>
         </div>
-        <div onClick={func}>
+        <div >
           <Link to='/preferences'>
           <p>Prefrences</p>
           </Link>
@@ -45,7 +43,7 @@ export default function Footer() {
         <p>People</p>
         </div>
         <ul className="footerContent">
-            <li onClick={func}><Link to="/person/popular">Popular</Link></li>
+            <li ><Link to="/person/popular"><p>Popular</p></Link></li>
            
         </ul>
       </div>
@@ -55,11 +53,11 @@ export default function Footer() {
         <p>Tv</p>
         </div>
         <ul className="footerContent">
-        <li onClick={func}><Link to="/tv/popular">Popular</Link></li>
-        <li onClick={func}> <Link to="/tv/top_rated">Top Rated</Link></li>
-        <li onClick={func}> <Link to="/discover/tv"> Discover  </Link> </li>
-        <li onClick={func}> <Link to="/tv/airing_today">TV Airing Today </Link></li>
-        <li onClick={func}><Link to="/tv/on_the_air">  TV On The Air</Link></li>
+        <li ><Link to="/tv/popular"><p>Popular</p></Link></li>
+        <li > <Link to="/tv/top_rated"> <p>Top Rated</p></Link></li>
+        <li > <Link to="/discover/tv"> <p> Discover </p> </Link> </li>
+        <li > <Link to="/tv/airing_today"> <p>TV Airing Today</p> </Link></li>
+        <li ><Link to="/tv/on_the_air">   <p>TV On The Air</p></Link></li>
         </ul>
       </div>
 
@@ -68,11 +66,11 @@ export default function Footer() {
         <p>Movies</p>
         </div>
         <ul className="footerContent">
-            <li onClick={func}><Link to="/movie/popular"  >Popular</Link></li>
-            <li onClick={func}><Link to="/movie/top_rated"  >Top Rated</Link></li>
-            <li onClick={func}><Link to="/discover/movie">Discover</Link></li>
-            <li onClick={func}><Link to="/movie/upcoming">Upcoming</Link></li>
-            <li onClick={func}><Link to='/movie/now_playing'>Now Playing</Link></li>
+            <li ><Link to="/movie/popular"  > <p>Popular</p></Link></li>
+            <li ><Link to="/movie/top_rated"  > <p>Top Rated</p></Link></li>
+            <li ><Link to="/discover/movie"> <p>Discover</p></Link></li>
+            <li ><Link to="/movie/upcoming"> <p>Upcoming</p></Link></li>
+            <li ><Link to='/movie/now_playing'> <p>Now Playing</p></Link></li>
         </ul>
       </div>
 
@@ -83,19 +81,19 @@ export default function Footer() {
           Trending
         </div>
         <ul className="footerContent">
-        <li onClick={func}><Link to="/trending/all/day">Shows & Movies in Day</Link></li>
-        <li onClick={func}><Link to="/trending/all/week">Shows & Movies in Week</Link></li>
-        <li onClick={func}><Link to="/trending/movie/day"> Movies in Day</Link></li>
-        <li onClick={func}><Link to="/trending/movie/week">Movies in Week</Link></li>
-        <li onClick={func}><Link to="/trending/tv/day">Shows  in Day</Link></li>
-        <li onClick={func}><Link to="/trending/tv/week">Shows  in Week</Link></li>
+        <li ><Link to="/trending/all/day">Shows & Movies in Day</Link></li>
+        <li ><Link to="/trending/all/week">Shows & Movies in Week</Link></li>
+        <li ><Link to="/trending/movie/day"> Movies in Day</Link></li>
+        <li ><Link to="/trending/movie/week">Movies in Week</Link></li>
+        <li ><Link to="/trending/tv/day">Shows  in Day</Link></li>
+        <li ><Link  to="/trending/tv/week">Shows  in Week</Link></li>
         </ul>
       </div>
     </div>
 
 <ul className='terms'>
-   <li onClick={func}><Link to='/privacy'>Privacy Policy</Link></li>
-   <li onClick={func}><Link to='/terms&conditions'>T&C</Link></li>
+   <li ><Link to='/privacy'><p>Privacy Policy</p></Link></li>
+   <li ><Link to='/terms&conditions'><p>T&C</p></Link></li>
    <li>&copy; H&Agroups 2022</li>
    <li>v1.00</li>
 </ul>

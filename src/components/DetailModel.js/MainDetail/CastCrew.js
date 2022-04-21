@@ -10,7 +10,7 @@ export default function CastCrew(props) {
     const {cast,crew,externalId,content,production,mainFunc}  = props;
     const func = (id,type,known_for,iden) =>{
       mainFunc(id,type,known_for,iden);
-      window.scrollTo(0, 0);
+     
     }
      
   return (
